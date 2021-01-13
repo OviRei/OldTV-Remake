@@ -1,3 +1,23 @@
 body {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Arial Black";
+}
+
+h1 {
+    padding: 200px 0;
+    font-size: 80px;
+    text-align: center;
+}
+
+#Score {
+    position: absolute;
+    top: 1%;
+    font-size: 20px;
+}
+
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
 }
