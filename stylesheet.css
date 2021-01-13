@@ -8,9 +8,16 @@ h1 {
     text-align: center;
 }
 
-#Score {
+#Highscore {
     position: absolute;
     top: 1%;
+    font-size: 23px;
+    color: rgb(6, 228, 6);
+}
+
+#Score {
+    position: absolute;
+    top: 6%;
     font-size: 20px;
 }
 
