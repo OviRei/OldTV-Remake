@@ -1,23 +1,25 @@
 body {
-    font-family: "Arial Black";
+    font-family: "Arial";
+    background-color: rgb(18, 18, 22);
+    color: white;
 }
 
 h1 {
-    padding: 200px 0;
+    padding: 16% 0;
     font-size: 80px;
     text-align: center;
 }
 
 #Highscore {
     position: absolute;
-    top: 1%;
+    top: 1px;
     font-size: 23px;
     color: rgb(6, 228, 6);
 }
 
 #Score {
     position: absolute;
-    top: 6%;
+    top: 34px;
     font-size: 20px;
 }
 
