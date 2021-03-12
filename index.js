@@ -38,7 +38,8 @@ let equalColors = false;
 function changeColor() 
 {
     //Changes the likelyhoods of hex colors and text colors being either the same or different
-    if(colorDifferences >= 6)
+    //1=red 2=yellow 3=green 4=blue 5=cyan 6=purple
+    if(colorDifferences >= 3)
     {
         colorNamelikelihoods = [5,5,5,5,5,5];
         colorHexlikelihoods = [5,5,5,5,5,5];
