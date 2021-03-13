@@ -56,6 +56,7 @@ let equalColors = false;
 //Changes colors
 function changeColor() 
 {
+    document.getElementById("GameOverText").style.display = "none";
     //Changes the likelyhoods of hex colors and text colors being either the same or different
     //1=red 2=yellow 3=green 4=blue 5=cyan 6=purple
     if(colorDifferences >= 3)
