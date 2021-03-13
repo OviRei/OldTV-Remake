@@ -1,7 +1,7 @@
 //Variable Initialising
-const colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
+let colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
 const colorHex = ["#ff073a", "#FFFF00", "#00FF00", "#0000ff", "#00FFFF", "#800080"];
-let score = -1;
+let score = 20;
 let highscore = -1;
 let clicks = 0;
 
@@ -24,6 +24,25 @@ function simulateEvent(chances)
         }
     }
     return -1;
+}
+
+//Shuffles text
+function shuffle(s) {
+    return s.replace(
+     /\b([a-z])([a-z]+)([a-z])\b/gi,
+        function( t, a, b, c ) 
+        {
+           b = b.split( /\B/ );
+           for( var i = b.length, j, k; i; j = parseInt( Math.random() * i ),
+            k = b[--i], b[i] = b[j], b[j] = k ) {}
+           return a + b.join( '' ) + c;
+        }
+    );
+}
+
+//Generate a random number
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 //Variable Initialising
@@ -69,6 +88,19 @@ function changeColor()
     //Add onto the score
     score++;
 
+    //Suffle color names after 20+
+    if(score >= 20)
+    {
+        if(getRndInteger(1, 2) == 1)
+        {
+            colorNames = [shuffle("red"), shuffle("yellow"), shuffle("green"), shuffle("blue"), shuffle("cyan"), shuffle("purple")];
+        }
+        else
+        {
+            colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
+        }
+    }
+
     //Changes the hex color and text color + updates score
     document.getElementById("ColorText").innerHTML = colorNames[colorRandomNum];
     document.getElementById("ColorText").style.color = colorHex[hexRandomNum]; 
@@ -82,7 +114,7 @@ function gameOver() {
         //Sets highscore and resets game
         if(score >= highscore)
         {
-            //TODO Use localstorage to store highscore
+            //TODO Use localstorage to store highscore (https://github.com/OviRei/OldTV-Remake/issues/2)
             highscore = score;
             document.getElementById("Highscore").innerHTML = `Highscore: ${highscore}`;
         }
@@ -100,8 +132,8 @@ function gameOver() {
 }
 
 let helpButtonClicked = false;
-
 //Help popup events
+//TODO https://github.com/OviRei/OldTV-Remake/issues/1
 document.getElementById('HelpButton').addEventListener("click", function() {
     helpButtonClicked = true;
     document.getElementById("HelpPopup").style.display = "block";
