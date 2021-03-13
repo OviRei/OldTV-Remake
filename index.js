@@ -52,6 +52,7 @@ let hexRandomNum;
 let colorNamelikelihoods;
 let colorHexlikelihoods;
 let equalColors = false;
+let invertedControls = false;
 
 //Changes colors
 function changeColor() 
@@ -112,6 +113,24 @@ function changeColor()
         }
     }
 
+    //Inverted controls
+    if(score >= 40)
+    {
+        if(getRndInteger(1, 4) == 1)
+        {
+            invertedControls = true;
+            document.getElementById("InvertedControlsText").style.display = "block";
+            document.getElementById("InvertedControlsImg").style.display = "block";
+        }
+        else
+        {
+            invertedControls = false;
+            document.getElementById("InvertedControlsText").style.display = "none";
+            document.getElementById("InvertedControlsImg").style.display = "none";
+        }
+    }
+
+    //Randomise background color
     if(score >= 50)
     {
         if(getRndInteger(0, 2) == 1)
@@ -141,12 +160,14 @@ function gameOver() {
         }
         document.getElementById("ColorText").innerHTML = "Game Over";
         document.getElementById("GameOverText").style.display = "block";
+        document.getElementById("InvertedControlsText").style.display = "none";
+        document.getElementById("InvertedControlsImg").style.display = "none";
         document.getElementById("ColorText").style.color = "white";
         document.body.style.backgroundColor = "rgb(18, 18, 22)";
         document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         clicks = 0;
-        score = -1;
+        score = 50;
     }
     else
     {
@@ -173,9 +194,18 @@ function rightClick(clickEvent)
 { 
     clickEvent.preventDefault(); 
 
-    clicks++;
-    if(!equalColors) changeColor();
-    else gameOver();
+    if(!invertedControls)
+    {
+        clicks++;
+        if(!equalColors) changeColor();
+        else gameOver();              
+    }
+    else
+    {
+        clicks++;
+        if(equalColors) changeColor();
+        else gameOver(); 
+    }
 };
 
 //Left Click event
@@ -183,8 +213,17 @@ document.body.addEventListener("click", function ()
 {
     if(!helpButtonClicked)
     {
-        clicks++;
-        if(equalColors) changeColor();
-        else gameOver();        
+        if(!invertedControls)
+        {
+            clicks++;
+            if(equalColors) changeColor();
+            else gameOver();              
+        }
+        else
+        {
+            clicks++;
+            if(!equalColors) changeColor();
+            else gameOver(); 
+        }
     }
 });

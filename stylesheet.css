@@ -10,6 +10,19 @@ h1 {
     text-align: center;
 }
 
+#InvertedControlsText {
+    position: absolute;
+    top: 57%;
+    left: 43%;
+    font-size: 35px;
+}
+
+#InvertedControlsImg {
+    position: absolute;
+    top: 62%;
+    left: 40%;
+}
+
 #GameOverText {
     position: absolute;
     top: 53%;
