@@ -1,7 +1,7 @@
 //Variable Initialising
 let colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
 const colorHex = ["#ff073a", "#FFFF00", "#00FF00", "#0000ff", "#00FFFF", "#800080"];
-let score = 20;
+let score = -1;
 let highscore = -1;
 let clicks = 0;
 
@@ -95,6 +95,11 @@ function changeColor()
         {
             colorNames = [shuffle("red"), shuffle("yellow"), shuffle("green"), shuffle("blue"), shuffle("cyan"), shuffle("purple")];
         }
+        else if(getRndInteger(1, 2) == 1)
+        {
+            if(score <= 30) colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
+            else colorNames = ["pǝɹ", "ʍollǝʎ", "uǝǝɹƃ", "ǝnlq", "uɐʎɔ", "ǝldɹnd"];
+        }
         else
         {
             colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
@@ -123,7 +128,7 @@ function gameOver() {
         document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         clicks = 0;
-        score = 0;
+        score = -1;
     }
     else
     {
