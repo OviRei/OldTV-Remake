@@ -10,6 +10,14 @@ h1 {
     text-align: center;
 }
 
+#GameOverText {
+    position: absolute;
+    top: 53%;
+    left: 43.5%;
+    font-size: 20px;
+    display: none;
+}
+
 #Highscore {
     position: absolute;
     top: 1px;

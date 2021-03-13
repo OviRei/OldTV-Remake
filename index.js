@@ -88,6 +88,11 @@ function changeColor()
     //Add onto the score
     score++;
 
+    //Changes the hex color and text color + updates score
+    document.getElementById("ColorText").innerHTML = colorNames[colorRandomNum];
+    document.getElementById("ColorText").style.color = colorHex[hexRandomNum]; 
+    document.getElementById("Score").innerHTML = `Score: ${score}`;
+
     //Suffle color names after 20+
     if(score >= 20)
     {
@@ -106,10 +111,20 @@ function changeColor()
         }
     }
 
-    //Changes the hex color and text color + updates score
-    document.getElementById("ColorText").innerHTML = colorNames[colorRandomNum];
-    document.getElementById("ColorText").style.color = colorHex[hexRandomNum]; 
-    document.getElementById("Score").innerHTML = `Score: ${score}`;
+    if(score >= 50)
+    {
+        if(getRndInteger(0, 2) == 1)
+        {
+            let randomBackgroundColorNum = getRndInteger(0, 5);
+            let randomBackgroundColor = colorHex[randomBackgroundColorNum];
+            if(randomBackgroundColorNum == hexRandomNum) document.body.style.backgroundColor = "rgb(18, 18, 22)";
+            else document.body.style.backgroundColor = randomBackgroundColor;
+        }
+        else
+        {
+            document.body.style.backgroundColor = "rgb(18, 18, 22)";
+        }
+    }
 }
 
 //Game over :p
@@ -124,7 +139,9 @@ function gameOver() {
             document.getElementById("Highscore").innerHTML = `Highscore: ${highscore}`;
         }
         document.getElementById("ColorText").innerHTML = "Game Over";
-        document.getElementById("ColorText").style.color = "white"; 
+        document.getElementById("GameOverText").style.display = "block";
+        document.getElementById("ColorText").style.color = "white";
+        document.body.style.backgroundColor = "rgb(18, 18, 22)";
         document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         clicks = 0;
