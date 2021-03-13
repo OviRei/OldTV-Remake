@@ -99,6 +99,19 @@ function gameOver() {
     }
 }
 
+let helpButtonClicked = false;
+
+//Help popup events
+document.getElementById('HelpButton').addEventListener("click", function() {
+    helpButtonClicked = true;
+    document.getElementById("HelpPopup").style.display = "block";
+})
+
+document.getElementById('ClosePopupButton').addEventListener("click", function() {
+    helpButtonClicked = false;
+    document.getElementById("HelpPopup").style.display = "none";
+})
+
 //Right Click event
 document.oncontextmenu = rightClick; 
 function rightClick(clickEvent) 
@@ -113,7 +126,10 @@ function rightClick(clickEvent)
 //Left Click event
 document.body.addEventListener("click", function () 
 {
-    clicks++;
-    if(equalColors) changeColor();
-    else gameOver();
+    if(!helpButtonClicked)
+    {
+        clicks++;
+        if(equalColors) changeColor();
+        else gameOver();        
+    }
 });
