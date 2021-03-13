@@ -167,7 +167,7 @@ function gameOver() {
         document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         clicks = 0;
-        score = 50;
+        score = -1;
     }
     else
     {
