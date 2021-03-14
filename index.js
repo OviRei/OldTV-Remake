@@ -5,6 +5,30 @@ let score = -1;
 let highscore = -1;
 let clicks = 0;
 
+//Timer Variables
+let ms = 0;
+let running = false;
+let tInterval;
+
+//Timer
+function startTimer()
+{
+    if(!running)
+    {
+        tInterval = setInterval(timeInterval, 1);
+        running = true;
+    }
+}
+
+function resetTimer()
+{
+    clearInterval(tInterval);
+    running = false;
+    ms = 0;
+}
+
+function timeInterval(){ ms++; }
+
 // Generates the chances for colors displayed
 function simulateEvent(chances) 
 {
@@ -57,6 +81,7 @@ let invertedControls = false;
 //Changes colors
 function changeColor() 
 {
+    document.getElementById("Frequency").style.display = "block";
     document.getElementById("GameOverText").style.display = "none";
     //Changes the likelyhoods of hex colors and text colors being either the same or different
     //1=red 2=yellow 3=green 4=blue 5=cyan 6=purple
@@ -145,6 +170,22 @@ function changeColor()
             document.body.style.backgroundColor = "rgb(18, 18, 22)";
         }
     }
+
+    if(running) resetTimer();
+    startTimer();
+
+    //Checks frequency level
+    setInterval(function(){
+        const maxFrequency = Math.floor((1.03**(-score+23.5)+1)*1000);
+        let frequency = maxFrequency - ms;
+        document.getElementById("Frequency").innerHTML = `${frequency}hz`;
+
+        if(frequency >= (1.03**(-score+23.5)+1)*1000) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
+        {
+            clicks = 2;
+            gameOver();
+        }
+    }, 1);
 }
 
 //Game over :p
@@ -162,12 +203,16 @@ function gameOver() {
         document.getElementById("GameOverText").style.display = "block";
         document.getElementById("InvertedControlsText").style.display = "none";
         document.getElementById("InvertedControlsImg").style.display = "none";
+        document.getElementById("Frequency").style.display = "none";
         document.getElementById("ColorText").style.color = "white";
         document.body.style.backgroundColor = "rgb(18, 18, 22)";
         document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         clicks = 0;
         score = -1;
+        
+        //Resets frequency
+        resetTimer();
     }
     else
     {
