@@ -180,7 +180,7 @@ function changeColor()
         let frequency = maxFrequency - ms;
         document.getElementById("Frequency").innerHTML = `${frequency}hz`;
 
-        if(frequency >= (1.03**(-score+23.5)+1)*1000) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
+        if(ms >= (1.03**(-score+23.5)+1)*1000) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
         {
             clicks = 2;
             gameOver();
