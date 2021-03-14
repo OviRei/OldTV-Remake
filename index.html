@@ -5,13 +5,15 @@
     <title>OldTV Remake</title>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
-<body>
+<body>    
+    <div class="disable-select"><h1 id="ColorText">Click to start game</h1></div>
+
     <p id="Highscore"></p>
     <p id="Score"></p>
     <p id="Frequency"></p>
 
-    <div class="disable-select"><h1 id="ColorText">Click to start game</h1></div>
-    <p id="GameOverText">Click anywhere to restart</p>
+    <div id="LeftControl"></div>
+    <div id="RightControl"></div>
 
     <img id="InvertedControlsImg" src="inverted-controls.png" width="40" height="40" style="display:none"> 
     <p id="InvertedControlsText" style="display:none">Inverted Controls</p>
@@ -25,9 +27,13 @@
             if they are not the same press <br>
             right click. <br>
         </p>
+        <p>Same goes for mobile but instead <br>
+            press either the left or right side <br>
+            of the screen</p>
         <button id="ClosePopupButton" type="button">x</button> 
     </div>
 
+    <small id="ps">ps: yes i know that the design is trash and game doesn't work very well but i cba to fix this stuff</small>
     <script src="index.js"></script> 
 </body>
 </html>
