@@ -176,11 +176,12 @@ function changeColor()
 
     //Checks frequency level
     setInterval(function(){
-        const maxFrequency = Math.floor((1.03**(-score+23.5)+1)*1000);
-        let frequency = maxFrequency - ms;
+        const maxFrequency = (1.03**(-score+23.5)+1)*100;
+        let frequency = Math.floor(maxFrequency) - ms;
+        console.log(maxFrequency)
         document.getElementById("Frequency").innerHTML = `${frequency}hz`;
 
-        if(ms >= (1.03**(-score+23.5)+1)*1000) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
+        if(ms >= maxFrequency) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
         {
             clicks = 2;
             gameOver();
