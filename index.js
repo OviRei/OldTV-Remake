@@ -77,10 +77,44 @@ let colorNamelikelihoods;
 let colorHexlikelihoods;
 let equalColors = false;
 let invertedControls = false;
+const audio = document.querySelector("audio");
 
 //Changes colors
 function changeColor() 
 {
+    //Music
+    if (audio.paused) 
+    {
+        const audioRnd = getRndInteger(1, 3);
+        if(audioRnd == 1)
+        {
+            //STAMINA
+            audio.setAttribute('src', 'media/STAMINA.mp3');
+            audio.load();
+            audio.volume = 0.2;
+            audio.currentTime = 0;
+            audio.play();
+        }
+        else if(audioRnd == 2)
+        {
+            //Oceania
+            audio.setAttribute('src', 'media/Oceania.mp3');
+            audio.load();
+            audio.volume = 0.2;
+            audio.currentTime = 20;
+            audio.play();
+        }
+        else if(audioRnd == 3)
+        {
+            //Americas
+            audio.setAttribute('src', 'media/Americas.mp3');
+            audio.load();
+            audio.volume = 0.2;
+            audio.currentTime = 0;
+            audio.play();  
+        }
+    }
+
     document.getElementById("Frequency").style.display = "block";
     //Changes the likelyhoods of hex colors and text colors being either the same or different
     //1=red 2=yellow 3=green 4=blue 5=cyan 6=purple
@@ -211,6 +245,9 @@ function gameOver() {
         
         //Resets frequency
         resetTimer();
+
+        //Music
+        audio.pause();
     }
     else
     {
