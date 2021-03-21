@@ -116,6 +116,7 @@ function changeColor()
     }
 
     document.getElementById("Frequency").style.display = "block";
+
     //Changes the likelyhoods of hex colors and text colors being either the same or different
     //1=red 2=yellow 3=green 4=blue 5=cyan 6=purple
     if(colorDifferences >= 3)
@@ -153,7 +154,7 @@ function changeColor()
     document.getElementById("ColorText").style.color = colorHex[hexRandomNum]; 
     document.getElementById("Score").innerHTML = `Score: ${score}`;
 
-    //Suffle color names after 20+
+    //Suffle color names after score 20+
     if(score >= 20)
     {
         if(getRndInteger(1, 2) == 1)
@@ -171,7 +172,20 @@ function changeColor()
         }
     }
 
-    //Inverted controls
+    //Suffle color names after 30+
+    if(score >= 30)
+    {
+        if(getRndInteger(1, 2) == 1)
+        {
+            colorNames = ["pǝɹ", "ʍollǝʎ", "uǝǝɹƃ", "ǝnlq", "uɐʎɔ", "ǝldɹnd"];
+        }
+        else
+        {
+            colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
+        }
+    }
+
+    //Inverted controls after score 40+
     if(score >= 40)
     {
         if(getRndInteger(1, 4) == 1)
@@ -204,6 +218,45 @@ function changeColor()
         }
     }
 
+    //Text tilt animation
+    let tiltInterval = null;
+    let tiltBackInterval = null;
+    const ColorTextElem = document.getElementById("ColorText");
+    let pos = 0;
+
+    clearInterval(tiltInterval);
+    clearInterval(tiltBackInterval);
+    tiltInterval = setInterval(textTilt, 1);
+
+    function textTilt()
+    {
+        if (pos == 5) 
+        {
+            clearInterval(tiltInterval);
+            tiltBackInterval = setInterval(textTiltBack, 1);
+        }
+        else 
+        {
+            pos++;
+            ColorTextElem.style.rotate = `${pos}deg`;        
+        }
+    }
+
+    function textTiltBack()
+    {
+        if (pos == 0)
+        {
+            clearInterval(tiltBackInterval);
+
+        }
+        else 
+        {
+            pos--;
+            ColorTextElem.style.rotate = `${pos}deg`;                
+        }
+    }
+
+    //Starts frequency
     if(running) resetTimer();
     startTimer();
 
@@ -256,6 +309,7 @@ function gameOver() {
 }
 
 let helpButtonClicked = false;
+
 //Help popup events
 //TODO https://github.com/OviRei/OldTV-Remake/issues/1
 document.getElementById('HelpButton').addEventListener("click", function() {

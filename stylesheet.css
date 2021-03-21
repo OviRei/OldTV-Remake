@@ -16,6 +16,7 @@ h1 {
     padding-top: 16%;
     font-size: 80px;
     text-align: center;
+    overflow-x: hidden; 
 }
 
 #Frequency {
