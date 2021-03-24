@@ -51,7 +51,8 @@ function simulateEvent(chances)
 }
 
 //Shuffles text
-function shuffle(s) {
+function shuffle(s) 
+{
     return s.replace(
      /\b([a-z])([a-z]+)([a-z])\b/gi,
         function( t, a, b, c ) 
@@ -65,8 +66,101 @@ function shuffle(s) {
 }
 
 //Generate a random number
-function getRndInteger(min, max) {
+function getRndInteger(min, max) 
+{
     return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//Variable Initialising
+const ColorTextElem = document.getElementById("ColorText");
+let tiltInterval = null;
+let tiltBackInterval = null;
+let rotationDeg = 0;
+let animationBool = false;
+
+//Creates tilt animation on text
+function animateText()
+{
+    //Clears any on going intervals for when clicks are done before animation is done
+    clearInterval(tiltInterval);
+    clearInterval(tiltBackInterval);
+
+    //Starts the first tilt animation
+    tiltInterval = setInterval(textTilt, 10);
+
+    //First animation
+    function textTilt()
+    {
+        if(!animationBool)
+        {
+            if(rotationDeg == 3)
+            {
+                //Stops first animation
+                clearInterval(tiltInterval);
+                //Starts second animation
+                tiltBackInterval = setInterval(textTiltBack, 10);
+            }
+            else
+            {
+                //Changes the rotation of the element "ColorText"
+                rotationDeg++;
+                ColorTextElem.style.rotate = `${rotationDeg}deg`;
+            }
+        }
+        else
+        {
+            if(rotationDeg == -3)
+            {
+                //Stops first animation
+                clearInterval(tiltInterval);
+                //Starts second animation
+                tiltBackInterval = setInterval(textTiltBack, 10);
+            }
+            else
+            {
+                //Changes the rotation of the element "ColorText"
+                rotationDeg--;
+                ColorTextElem.style.rotate = `${rotationDeg}deg`;
+            }
+        }
+    }
+
+    //Second animation
+    function textTiltBack()
+    {
+        if(!animationBool)
+        {
+            if(rotationDeg == 0)
+            {
+                //Stops second animation
+                clearInterval(tiltBackInterval);
+
+                animationBool = true;
+            }
+            else
+            {
+                //Changes the rotation of the element "ColorText"
+                rotationDeg--;
+                ColorTextElem.style.rotate = `${rotationDeg}deg`;
+            }
+        }
+        else
+        {
+            if(rotationDeg == 0)
+            {
+                //Stops second animation
+                clearInterval(tiltBackInterval);
+
+                animationBool = false;
+            }
+            else
+            {
+                //Changes the rotation of the element "ColorText"
+                rotationDeg++;
+                ColorTextElem.style.rotate = `${rotationDeg}deg`;
+            }
+        }
+    }
 }
 
 //Variable Initialising
@@ -161,11 +255,6 @@ function changeColor()
         {
             colorNames = [shuffle("red"), shuffle("yellow"), shuffle("green"), shuffle("blue"), shuffle("cyan"), shuffle("purple")];
         }
-        else if(getRndInteger(1, 2) == 1)
-        {
-            if(score <= 30) colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
-            else colorNames = ["pǝɹ", "ʍollǝʎ", "uǝǝɹƃ", "ǝnlq", "uɐʎɔ", "ǝldɹnd"];
-        }
         else
         {
             colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
@@ -218,43 +307,7 @@ function changeColor()
         }
     }
 
-    //Text tilt animation
-    let tiltInterval = null;
-    let tiltBackInterval = null;
-    const ColorTextElem = document.getElementById("ColorText");
-    let pos = 0;
-
-    clearInterval(tiltInterval);
-    clearInterval(tiltBackInterval);
-    tiltInterval = setInterval(textTilt, 1);
-
-    function textTilt()
-    {
-        if (pos == 5) 
-        {
-            clearInterval(tiltInterval);
-            tiltBackInterval = setInterval(textTiltBack, 1);
-        }
-        else 
-        {
-            pos++;
-            ColorTextElem.style.rotate = `${pos}deg`;        
-        }
-    }
-
-    function textTiltBack()
-    {
-        if (pos == 0)
-        {
-            clearInterval(tiltBackInterval);
-
-        }
-        else 
-        {
-            pos--;
-            ColorTextElem.style.rotate = `${pos}deg`;                
-        }
-    }
+    animateText();
 
     //Starts frequency
     if(running) resetTimer();
