@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <title>OldTV Remake</title>
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="stylesheet" href="./Stylesheets/mainStylesheet.css">
+    <link rel="stylesheet" href="./Stylesheets/shopPopupStylesheet.css">
+    <link rel="stylesheet" href="./Stylesheets/achievementsPopupStylesheet.css">
+    <link rel="stylesheet" href="./Stylesheets/helpPopupStylesheet.css">
+</head>
+<body>
+    <div id="HorizontalClickArea"></div>
+    <div id="VerticalClickArea"></div>
+
+    <div class="disable-select">
+        <p id="Highscore"></p>
+        <p id="Score"></p>
+        <p id="Frequency"></p>        
+        
+        <h1 id="ChannelText">V</h1>
+
+        <img id="InvertedControlsImg" src="media/images/inverted-controls.png" width="40" height="40" style="display:none"> 
+        <p id="InvertedControlsText" style="display:none">Inverted Controls</p>  
+    </div>
+
+
+    
+    <button id="HelpButton" type="button">?</button>
+    <div id="HelpPopup" style="display:none">
+        <h2>How to play:</h2>
+        <p>
+            When the text color and text name <br>
+            are the same press left click but <br>
+            if they are not the same press <br>
+            right click. <br>
+        </p>
+        <p>
+            As the higher score you get the less <br> 
+            time you have to answer, you can see <br>
+            the timer in the top right hand corner. <br>
+        </p>
+        <p>
+            Reaching certain scores increases the <br>
+            dificulty of the game.
+        </p>
+        <p>
+            (Press `esc` to close the game)
+        </p>
+        <a target="_blank" href="https://github.com/OviRei/OldTV-Remake"><img src="media/images/github-icon.png" alt="GitHub Logo" style="width:37px;height:37px;"></a>
+        <button id="CloseHelpPopupButton" type="button">x</button> 
+    </div>
+
+    <div class="disable-select">
+        <img id="ShoppingCartImg" src="media/images/shopping-cart.png" width="80" height="80">
+        <div id="ShopPopup" style="display:none">
+            <h2>Shop</h2>
+            <br><br><br><br><br>
+            <p><b>Comming Soon</b></p>
+            <button id="CloseShopPopupButton" type="button">x</button> 
+        </div>
+
+        
+        <img id="TrophyImg" src="media/images/trophy.png" width="80" height="80">   
+        <div id="AchievementsPopup" style="display:none">
+            <h2>Achievements</h2>
+            <p>Reach Shuffled Color Names: X</p>
+            <p>Reach Upsidedown Color Names: X</p>
+            <p>Reach Inverted Controls: X</p>
+            <p>Reach Randomised Background Color: X</p>
+            <p>Acumalate 1000 CP: X</p>
+
+            <button id="CloseAchievementsPopupButton" type="button">x</button> 
+        </div>        
+    </div>
+
+
+    <audio></audio>
+    <script src="./gameScripts/gameScript.js" type="module"></script>
+    <script src="./gameScripts/gameAchievementsScript.js" type="module"></script>
+    <script src="./gameScripts/gameShopScript.js" type="module"></script>
+</body>
+</html>
