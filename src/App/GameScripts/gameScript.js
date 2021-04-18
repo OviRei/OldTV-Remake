@@ -73,9 +73,9 @@ if(document.addEventListener)
     }, false);
 }
 
-document.onkeydown = function(e) 
+document.onkeyup = function(e) 
 {
     e = e || window.event;
     if(e.key == "q") leftClick();
     else if(e.key == "e") rightClick();
-};
+}
