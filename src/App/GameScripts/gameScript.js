@@ -21,6 +21,34 @@ document.getElementById('CloseHelpPopupButton').addEventListener("click", functi
     document.getElementById('HorizontalClickArea').style.display = "block";
 });
 
+function leftClick()
+{
+    if(!invertedControls)
+    {
+        if(equalColors) changeChannel();
+        else gameOver();              
+    }
+    else
+    {
+        if(!equalColors) changeChannel();
+        else gameOver(); 
+    }
+}
+
+function rightClick()
+{
+    if(!invertedControls)
+    {
+        if(!equalColors) changeChannel();
+        else gameOver();   
+    }
+    else
+    {
+        if(equalColors) changeChannel();
+        else gameOver(); 
+    }
+}
+
 //ANCHOR LEFT Click
 [document.getElementById('VerticalClickArea'), document.getElementById('HorizontalClickArea')].forEach(item => 
 {
@@ -28,37 +56,26 @@ document.getElementById('CloseHelpPopupButton').addEventListener("click", functi
     {
         console.log("left clijc");
 
-        if(!invertedControls)
-        {
-            if(equalColors) changeChannel();
-            else gameOver();              
-        }
-        else
-        {
-            if(!equalColors) changeChannel();
-            else gameOver(); 
-        }
+        leftClick();
     })
 })
 
 //TODO When DB is set up make is so right click cant start the game while a popup is open
 //ANCHOR RIGHT Click
-if (document.addEventListener) 
+if(document.addEventListener) 
 {
     document.addEventListener('contextmenu', function(e) 
     {
         console.log("RIGHT clijc");
         e.preventDefault();
 
-        if(!invertedControls)
-        {
-            if(!equalColors) changeChannel();
-            else gameOver();   
-        }
-        else
-        {
-            if(equalColors) changeChannel();
-            else gameOver(); 
-        }
+        rightClick();
     }, false);
 }
+
+document.onkeydown = function(e) 
+{
+    e = e || window.event;
+    if(e.key == "q") leftClick();
+    else if(e.key == "e") rightClick();
+};

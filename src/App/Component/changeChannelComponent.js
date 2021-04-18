@@ -11,28 +11,21 @@ let colorDifferences = 0; //Counts the ammount of times the hex color and text c
 //Channel RND Variables
 let channelColorRandomNum;
 let channelHexRandomNum;
-let channelColorlikelihoods;
-let channelHexlikelihoods;
 let equalColors = false; //Checks if the the hex color and text color are the same
 
 function changeChannel()
 {
     //ANCHOR Channel RND
-    //Changes the likelyhoods of hex colors and text colors being either the same or different
-    //1) red 2) yellow 3) green 4) blue 5) cyan 6) purple
-    if(colorDifferences >= 3)
+    if(colorDifferences >= getRndInteger(4, 7))
     {
-        channelColorlikelihoods = [5,5,5,5,5,5];
-        channelHexlikelihoods = [5,5,5,5,5,5];
+        channelColorRandomNum = getRndInteger(0, 5);
+        channelHexRandomNum = channelColorRandomNum
     }
     else
     {
-        channelColorlikelihoods = [2,3,2,4,4,3];
-        channelHexlikelihoods = [1,3,2,5,3,2]; 
+        channelColorRandomNum = getRndInteger(0, 5);
+        channelHexRandomNum = getRndInteger(0, 5);
     }
-
-    channelColorRandomNum = simulateEvent(channelColorlikelihoods);
-    channelHexRandomNum = simulateEvent(channelHexlikelihoods);
 
     //Checks if the hex color and text color are the same
     if(channelColorRandomNum == channelHexRandomNum) 
