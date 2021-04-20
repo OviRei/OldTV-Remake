@@ -4,6 +4,7 @@
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
 
     <link rel="stylesheet" href="./Stylesheets/mainStylesheet.css">
     <link rel="stylesheet" href="./Stylesheets/shopPopupStylesheet.css">
@@ -11,18 +12,21 @@
     <link rel="stylesheet" href="./Stylesheets/helpPopupStylesheet.css">
 </head>
 <body>
-    <div id="HorizontalClickArea"></div>
-    <div id="VerticalClickArea"></div>
+    <div class="ClickArea" id="VerticalClickArea"></div>
+    <div class="ClickArea" id="HorizontalClickArea"></div>
+    
+    
 
     <div class="disable-select">
         <p id="Highscore"></p>
-        <p id="Score"></p>
-        <p id="Frequency"></p>        
+        <p class="ClickArea" id="Channel" style="display:none">Channel:</p>
+        <p class="ClickArea" id="Score"></p>
+        <p class="ClickArea" id="Frequency"></p>        
         
-        <h1 id="ChannelText">V</h1>
+        <h1 class="ClickArea" id="ChannelText">V</h1>
 
-        <img id="InvertedControlsImg" src="media/images/inverted-controls.png" width="40" height="40" style="display:none"> 
-        <p id="InvertedControlsText" style="display:none">Inverted Controls</p>  
+        <img class="ClickArea" id="InvertedControlsImg" src="media/images/inverted-controls.png" width="40" height="40" style="display:none"> 
+        <p class="ClickArea" id="InvertedControlsText" style="display:none">Inverted Controls</p>  
     </div>
 
 

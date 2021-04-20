@@ -1,24 +1,3 @@
-// Generates the chances for colors displayed
-function simulateEvent(chances) 
-{
-    let sum = 0;
-    chances.forEach(function(chance) 
-    {
-        sum += chance;
-    });
-    let rand = Math.random();
-    let chance = 0;
-    for(let i = 0; i < chances.length; i++) 
-    {
-        chance += chances[i] / sum;
-        if(rand<chance) 
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
 //Shuffles text
 function shuffle(s) 
 {
@@ -41,4 +20,4 @@ function getRndInteger(min, max)
 }
 
 //ANCHOR Exports
-export { simulateEvent, shuffle, getRndInteger };
+export { shuffle, getRndInteger };

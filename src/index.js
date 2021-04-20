@@ -30,7 +30,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'app/gameWindow.html'));
 
   globalShortcut.register('ESC', function () {
-    //app.quit();
+    app.quit();
   })
 };
 

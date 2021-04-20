@@ -1,5 +1,5 @@
 //ANCHOR Imports
-import { simulateEvent, shuffle, getRndInteger } from './gameComponents.js';
+import { shuffle, getRndInteger } from './gameComponents.js';
 
 //ANCHOR Variable initialising
 let score = 0;
@@ -43,15 +43,20 @@ function changeChannel()
     score++;
     document.getElementById("ChannelText").innerHTML = colorNames[channelColorRandomNum];
     document.getElementById("ChannelText").style.color = COLOR_HEX[channelHexRandomNum]; 
-    document.getElementById("Score").innerHTML = `Score: ${score}`;
+    document.getElementById("Score").innerHTML = `#${score}`;
 
     //Adds difficulty after reaching certain scores
     changeDifficulty();
+
+    //Shows elements
+    document.getElementById("Channel").style.display = "block";
+    document.getElementById("Score").style.display = "block";    
 
     //Hides elements
     document.getElementById("TrophyImg").style.display = "none";
     document.getElementById("ShoppingCartImg").style.display = "none";
     document.getElementById("HelpButton").style.display = "none";
+    document.getElementById("Highscore").style.display = "none";
 }
 
 
@@ -132,11 +137,11 @@ function gameOver()
     if(score > 0)
     {
         //Sets highscore and resets game
-        if(score >= highscore)
+        if(score > highscore)
         {
             //TODO Use database to store highscore (https://github.com/OviRei/OldTV-Remake/issues/2)
             highscore = score;
-            document.getElementById("Highscore").innerHTML = `Highscore: ${highscore}`;
+            document.getElementById("Highscore").innerHTML = `#${highscore}`;
         }
 
         score = 0;
@@ -144,14 +149,16 @@ function gameOver()
         document.getElementById("ChannelText").innerHTML = "Game Over";
         document.getElementById("ChannelText").style.color = "white";
         document.body.style.backgroundColor = "rgb(18, 18, 22)";
-        document.getElementById("Score").innerHTML = `Score: ${score}`;
 
         //Hides elements
+        document.getElementById("Channel").style.display = "none";
+        document.getElementById("Score").style.display = "none";
         document.getElementById("InvertedControlsText").style.display = "none";
         document.getElementById("InvertedControlsImg").style.display = "none";
         document.getElementById("Frequency").style.display = "none";
 
         //Shows elements
+        document.getElementById("Highscore").style.display = "block";
         document.getElementById("TrophyImg").style.display = "block";
         document.getElementById("ShoppingCartImg").style.display = "block";
         document.getElementById("HelpButton").style.display = "block";

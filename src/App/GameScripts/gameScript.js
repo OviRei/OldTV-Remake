@@ -1,5 +1,5 @@
 //ANCHOR Imports
-import { simulateEvent, shuffle, getRndInteger } from '../Component/gameComponents.js';
+import { shuffle, getRndInteger } from '../Component/gameComponents.js';
 import { equalColors, invertedControls, changeChannel, gameOver } from '../Component/changeChannelComponent.js';
 import * as timer from '../Component/timerComponent.js';
 
@@ -21,7 +21,7 @@ document.getElementById('CloseHelpPopupButton').addEventListener("click", functi
     document.getElementById('HorizontalClickArea').style.display = "block";
 });
 
-function leftClick()
+function leftControl()
 {
     if(!invertedControls)
     {
@@ -35,7 +35,7 @@ function leftClick()
     }
 }
 
-function rightClick()
+function rightControl()
 {
     if(!invertedControls)
     {
@@ -50,32 +50,29 @@ function rightClick()
 }
 
 //ANCHOR LEFT Click
-[document.getElementById('VerticalClickArea'), document.getElementById('HorizontalClickArea')].forEach(item => 
-{
-    item.addEventListener('click', event => 
-    {
-        console.log("left clijc");
+const CLICK_AREA_ELMS = document.querySelectorAll('.ClickArea');
 
-        leftClick();
-    })
-})
+CLICK_AREA_ELMS.forEach(el => el.addEventListener('click', event => {
+    console.log("left click");
+    leftControl();
+}));
 
-//TODO When DB is set up make is so right click cant start the game while a popup is open
+//TODO Make is so right click cant start the game while a popup is open
 //ANCHOR RIGHT Click
 if(document.addEventListener) 
 {
     document.addEventListener('contextmenu', function(e) 
     {
-        console.log("RIGHT clijc");
         e.preventDefault();
-
-        rightClick();
+        console.log("RIGHT click");
+        rightControl();
     }, false);
 }
 
-document.onkeyup = function(e) 
+//ANCHOR Keyboard Controls
+document.onkeyup = function(e)
 {
     e = e || window.event;
-    if(e.key == "q") leftClick();
-    else if(e.key == "e") rightClick();
+    if(e.key == "q") leftControl();
+    else if(e.key == "e") rightControl();
 }
