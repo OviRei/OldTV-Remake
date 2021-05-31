@@ -1,7 +1,10 @@
 //ANCHOR Imports
 import { shuffle, getRndInteger } from '../Component/gameComponents.js';
-import { equalColors, invertedControls, changeChannel, gameOver } from '../Component/changeChannelComponent.js';
+import { equalColors, invertedControls, changeChannel } from '../Component/changeChannelComponent.js';
+import { gameOver } from '../Component/gameOverComponent.js';
 import * as timer from '../Component/timerComponent.js';
+
+document.getElementById("Highscore").innerHTML = `#${localStorage.DBhighscore}`;
 
 //ANCHOR Help Button
 document.getElementById('HelpButton').addEventListener("click", function() 
@@ -53,7 +56,7 @@ function rightControl()
 const CLICK_AREA_ELMS = document.querySelectorAll('.ClickArea');
 
 CLICK_AREA_ELMS.forEach(el => el.addEventListener('click', event => {
-    console.log("left click");
+   // console.log("left click");
     leftControl();
 }));
 
@@ -64,7 +67,7 @@ if(document.addEventListener)
     document.addEventListener('contextmenu', function(e) 
     {
         e.preventDefault();
-        console.log("RIGHT click");
+        //console.log("RIGHT click");
         rightControl();
     }, false);
 }

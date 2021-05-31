@@ -37,10 +37,7 @@ body {
 }
 
 #Highscore {
-    /*position: absolute;
-    top: 1px;*/
     font-size: 45px;
-    /*color: rgb(6, 228, 6);*/
     text-align: center;
     position: absolute;
     bottom: 37%;

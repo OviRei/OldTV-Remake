@@ -2,16 +2,16 @@
 import { shuffle, getRndInteger } from './gameComponents.js';
 
 //ANCHOR Variable initialising
-let score = 0;
-
 let colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
 const COLOR_HEX = ["#ff073a", "#FFFF00", "#00FF00", "#0000ff", "#00FFFF", "#800080"];
 
-let colorDifferences = 0; //Counts the ammount of times the hex color and text color are different
+let colorDifferences = 0; //Counts the amount of times the hex color and text color are different
 //Channel RND Variables
 let channelColorRandomNum;
 let channelHexRandomNum;
 let equalColors = false; //Checks if the the hex color and text color are the same
+
+if(sessionStorage.getItem("DBscore") === null) sessionStorage.setItem("DBscore", 0); //Sets DBscore to 0 if it doesn't exist
 
 function changeChannel()
 {
@@ -40,13 +40,13 @@ function changeChannel()
     }
     
     //Changes the hex color and text color + updates score
-    score++;
+    sessionStorage.setItem("DBscore", Number(sessionStorage.DBscore)+1);
     document.getElementById("ChannelText").innerHTML = colorNames[channelColorRandomNum];
     document.getElementById("ChannelText").style.color = COLOR_HEX[channelHexRandomNum]; 
-    document.getElementById("Score").innerHTML = `#${score}`;
+    document.getElementById("Score").innerHTML = `#${sessionStorage.DBscore}`;
 
     //Adds difficulty after reaching certain scores
-    changeDifficulty();
+    /*changeDifficulty();*/
 
     //Shows elements
     document.getElementById("Channel").style.display = "block";
@@ -64,7 +64,7 @@ function changeChannel()
 //ANCHOR Change Difficulty
 let invertedControls = false;
 
-function changeDifficulty()
+/*function changeDifficulty()
 {
     if(score < 20) colorNames = ["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"];
 
@@ -126,48 +126,7 @@ function changeDifficulty()
             document.body.style.backgroundColor = "rgb(18, 18, 22)";
         }
     }
-}
-
-//TODO Put this in own component once database is set up
-//ANCHOR Game Over
-let highscore = 0;
-
-function gameOver()
-{
-    if(score > 0)
-    {
-        //Sets highscore and resets game
-        if(score > highscore)
-        {
-            //TODO Use database to store highscore (https://github.com/OviRei/OldTV-Remake/issues/2)
-            highscore = score;
-            document.getElementById("Highscore").innerHTML = `#${highscore}`;
-        }
-
-        score = 0;
-
-        document.getElementById("ChannelText").innerHTML = "Game Over";
-        document.getElementById("ChannelText").style.color = "white";
-        document.body.style.backgroundColor = "rgb(18, 18, 22)";
-
-        //Hides elements
-        document.getElementById("Channel").style.display = "none";
-        document.getElementById("Score").style.display = "none";
-        document.getElementById("InvertedControlsText").style.display = "none";
-        document.getElementById("InvertedControlsImg").style.display = "none";
-        document.getElementById("Frequency").style.display = "none";
-
-        //Shows elements
-        document.getElementById("Highscore").style.display = "block";
-        document.getElementById("TrophyImg").style.display = "block";
-        document.getElementById("ShoppingCartImg").style.display = "block";
-        document.getElementById("HelpButton").style.display = "block";
-    }    
-    else
-    {
-        changeChannel();
-    }
-}
+}*/
 
 //ANCHOR Exports
-export { equalColors, highscore, score, invertedControls, changeChannel, gameOver };
+export { equalColors, invertedControls, changeChannel };
