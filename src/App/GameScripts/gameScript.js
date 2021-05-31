@@ -12,6 +12,7 @@ document.getElementById('HelpButton').addEventListener("click", function()
     document.getElementById("HelpPopup").style.display = "block";
     document.getElementById("ShopPopup").style.display = "none";
     document.getElementById("AchievementsPopup").style.display = "none";
+    document.getElementById("SettingsPopup").style.display = "none";
 });
 
 document.getElementById('CloseHelpPopupButton').addEventListener("click", function() 
@@ -19,6 +20,7 @@ document.getElementById('CloseHelpPopupButton').addEventListener("click", functi
     document.getElementById("HelpPopup").style.display = "none";
     document.getElementById("AchievementsPopup").style.display = "none";
     document.getElementById("ShopPopup").style.display = "none";
+    document.getElementById("SettingsPopup").style.display = "none";``
 
     document.getElementById('VerticalClickArea').style.display = "block";
     document.getElementById('HorizontalClickArea').style.display = "block";

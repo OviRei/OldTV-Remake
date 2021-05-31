@@ -5,7 +5,7 @@ if(localStorage.getItem("DBhighscore") === null) localStorage.setItem("DBhighsco
 
 function gameOver()
 {
-    if(sessionStorage.getItem("DBscore") > 0)
+    if(Number(sessionStorage.getItem("DBscore")) > 0)
     {
         //Sets highscore and resets game
         if(Number(sessionStorage.getItem("DBscore")) > Number(localStorage.getItem("DBhighscore")))

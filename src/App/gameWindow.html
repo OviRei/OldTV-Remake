@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./Stylesheets/shopPopupStylesheet.css">
     <link rel="stylesheet" href="./Stylesheets/achievementsPopupStylesheet.css">
     <link rel="stylesheet" href="./Stylesheets/helpPopupStylesheet.css">
+    <link rel="stylesheet" href="./Stylesheets/settingsPopupStylesheet.css">
 </head>
 <body>
     <div class="ClickArea" id="VerticalClickArea"></div>
@@ -76,7 +77,15 @@
             <p>Acumalate 1000 CP: X</p>
 
             <button id="CloseAchievementsPopupButton" type="button">x</button> 
-        </div>        
+        </div>  
+        
+        <img id="SettingsImg" src="media/images/settings.png" width="80" height="80">
+        <div id="SettingsPopup" style="display:none">
+            <h2>Settings</h2>
+            <br><br><br><br><br>
+            <p><b>Comming Soon</b></p>
+            <button id="CloseSettingsPopupButton" type="button">x</button> 
+        </div>
     </div>
 
 
@@ -84,5 +93,6 @@
     <script src="./gameScripts/gameScript.js" type="module"></script>
     <script src="./gameScripts/gameAchievementsScript.js" type="module"></script>
     <script src="./gameScripts/gameShopScript.js" type="module"></script>
+    <script src="./gameScripts/gameSettingsScript.js" type="module"></script>
 </body>
 </html>
