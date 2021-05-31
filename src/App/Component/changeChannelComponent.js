@@ -55,6 +55,7 @@ function changeChannel()
     //Hides elements
     document.getElementById("TrophyImg").style.display = "none";
     document.getElementById("ShoppingCartImg").style.display = "none";
+    document.getElementById("SettingsImg").style.display = "none";
     document.getElementById("HelpButton").style.display = "none";
     document.getElementById("Highscore").style.display = "none";
 }

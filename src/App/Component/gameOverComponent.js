@@ -33,6 +33,7 @@ function gameOver()
         document.getElementById("TrophyImg").style.display = "block";
         document.getElementById("ShoppingCartImg").style.display = "block";
         document.getElementById("HelpButton").style.display = "block";
+        document.getElementById("SettingsImg").style.display = "block";
     }    
     else
     {
