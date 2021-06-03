@@ -1,10 +1,9 @@
 //ANCHOR Imports
-import { shuffle, getRndInteger } from '../Component/gameComponents.js';
-import { equalColors, invertedControls, changeChannel } from '../Component/changeChannelComponent.js';
+import { equalColors, changeChannel } from '../Component/changeChannelComponent.js';
 import { gameOver } from '../Component/gameOverComponent.js';
 import * as timer from '../Component/timerComponent.js';
 
-document.getElementById("Highscore").innerHTML = `#${localStorage.DBhighscore}`;
+document.getElementById("Highscore").innerHTML = `#${localStorage.getItem("DBhighscore")}`;
 
 //ANCHOR Help Button
 document.getElementById('HelpButton').addEventListener("click", function() 
@@ -28,37 +27,42 @@ document.getElementById('CloseHelpPopupButton').addEventListener("click", functi
 
 function leftControl()
 {
-    if(!invertedControls)
-    {
-        if(equalColors) changeChannel();
-        else gameOver();              
-    }
-    else
-    {
-        if(!equalColors) changeChannel();
-        else gameOver(); 
-    }
+    //if(sessionStorage.getItem("DBinvertedControls"))
+    //{
+    //    if(equalColors) changeChannel();
+    //    else gameOver();
+    //}
+    //else
+    //{
+    //    if(!equalColors) changeChannel();
+    //    else gameOver(); 
+    //}
+
+    if(equalColors) changeChannel();
+    else gameOver();
 }
 
 function rightControl()
 {
-    if(!invertedControls)
-    {
-        if(!equalColors) changeChannel();
-        else gameOver();   
-    }
-    else
-    {
-        if(equalColors) changeChannel();
-        else gameOver(); 
-    }
+    //if(sessionStorage.getItem("DBinvertedControls"))
+    //{
+    //    if(!equalColors) changeChannel();
+    //    else gameOver();   
+    //}
+    //else
+    //{
+    //    if(equalColors) changeChannel();
+    //    else gameOver(); 
+    //}
+
+    if(!equalColors) changeChannel();
+    else gameOver();
 }
 
 //ANCHOR LEFT Click
 const CLICK_AREA_ELMS = document.querySelectorAll('.ClickArea');
 
 CLICK_AREA_ELMS.forEach(el => el.addEventListener('click', event => {
-   // console.log("left click");
     leftControl();
 }));
 
@@ -69,7 +73,6 @@ if(document.addEventListener)
     document.addEventListener('contextmenu', function(e) 
     {
         e.preventDefault();
-        //console.log("RIGHT click");
         rightControl();
     }, false);
 }
