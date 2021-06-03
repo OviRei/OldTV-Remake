@@ -2,7 +2,7 @@
   "name": "oldtv-remake",
   "productName": "oldtv-remake",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": ":fatmoring:",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -10,7 +10,20 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "build": "electron-packager . OldTV-Remake --prune",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "OldTV-Remake",
+    "win": {
+      "target": ["nsis"]
+    },
+    "nsis": {
+      "uninstallDisplayName": "OldTV-Remake",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "keywords": [],
   "author": {
@@ -57,6 +70,7 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "electron": "12.0.2",
     "electron-builder": "^22.10.5",
+    "electron-packager": "^15.2.0",
     "electron-rebuild": "^2.3.5"
   }
 }
