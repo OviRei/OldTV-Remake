@@ -15,6 +15,8 @@ function gameOver()
         }
 
         sessionStorage.setItem("DBscore", 0);
+        sessionStorage.setItem("DBcolorNames", JSON.stringify(["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"]));
+        //sessionStorage.setItem("DBinvertedControls", false);
 
         document.getElementById("Highscore").innerHTML = `#${localStorage.getItem("DBhighscore")}`;
         document.getElementById("ChannelText").innerHTML = "Game Over";
