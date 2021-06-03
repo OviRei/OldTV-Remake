@@ -1,7 +1,6 @@
 //ANCHOR Imports
 import { equalColors, changeChannel } from '../Component/changeChannelComponent.js';
 import { gameOver } from '../Component/gameOverComponent.js';
-import * as timer from '../Component/timerComponent.js';
 
 document.getElementById("Highscore").innerHTML = `#${localStorage.getItem("DBhighscore")}`;
 

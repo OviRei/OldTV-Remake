@@ -1,4 +1,5 @@
 import { changeChannel } from '../Component/changeChannelComponent.js';
+import * as timer from '../Component/timerComponent.js';
 
 //ANCHOR Game Over
 if(localStorage.getItem("DBhighscore") === null) localStorage.setItem("DBhighscore", 0); //Sets DBhighscore to 0 if it doesn't exist
@@ -17,6 +18,8 @@ function gameOver()
         sessionStorage.setItem("DBscore", 0);
         sessionStorage.setItem("DBcolorNames", JSON.stringify(["Red", "Yellow", "Green", "Blue", "Cyan", "Purple"]));
         //sessionStorage.setItem("DBinvertedControls", false);
+
+        timer.reset();
 
         document.getElementById("Highscore").innerHTML = `#${localStorage.getItem("DBhighscore")}`;
         document.getElementById("ChannelText").innerHTML = "Game Over";

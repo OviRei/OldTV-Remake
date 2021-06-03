@@ -1,6 +1,9 @@
 //ANCHOR Imports
 import { getRndInteger } from './gameComponents.js';
+import { gameOver } from '../Component/gameOverComponent.js';
 import { changeDifficulty } from './changeDifficultyComponent.js';
+import * as timer from '../Component/timerComponent.js';
+
 
 //Initializing localstorage 
 if(sessionStorage.getItem("DBscore") === null) sessionStorage.setItem("DBscore", 0);
@@ -52,9 +55,27 @@ function changeChannel()
     //Adds difficulty after reaching certain scores
     changeDifficulty();
 
+    //Starts frequency
+    if(timer.running) timer.reset();
+    timer.start();
+
+    //Checks frequency level
+    setInterval(function()
+    {
+        const maxFrequency = (1.03**(-Number(sessionStorage.getItem("DBscore"))+23.5)+1.38)*100;
+        let frequency = Math.floor(maxFrequency) - timer.ms;
+        document.getElementById("Frequency").innerHTML = `${frequency}hz`;
+
+        if(timer.ms >= maxFrequency) //https://discord.com/channels/418091414015049729/800327191689953290/820433698095759362 https://www.geogebra.org/calculator
+        {
+            gameOver();
+        }
+    }, 1);
+
     //Shows elements
     document.getElementById("Channel").style.display = "block";
-    document.getElementById("Score").style.display = "block";    
+    document.getElementById("Score").style.display = "block";   
+    document.getElementById("Frequency").style.display = "block"; 
 
     //Hides elements
     document.getElementById("TrophyImg").style.display = "none";
