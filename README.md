@@ -1,8 +1,11 @@
-# OldTV but in javascript
-i took the concept/game idea of the game "Old TV" but recreated it in javascript annnnnnnnd made it way worse :) 
-
-### \**The web version (below) is no longer being worked on and has loads of bugs\**
-#### \**I'm now working on an electron app for the game which the code for can be found in the electron branch\**
-My version: https://ovirei.github.io/OldTV-Remake/
-
-Original game: https://store.steampowered.com/app/643270/OLDTV/
+# **OldTV-Remake**
+I took the concept/game idea of a game called "Old TV" and tried to recreate it and add my own features and ideas.<br/>
+**Original game**: https://store.steampowered.com/app/643270/OLDTV/
+## Game Versions
+ ​   | Web | Electron
+------------ | ------------- | -------------
+**Status** | ***Not working on*** | ***Working on***
+**Where to play** | https://ovirei.github.io/OldTV-Remake/ | No playable version yet
+**Devices** | Desktop/Mobile | Desktop only
+**Branch** | [GithubPages](https://github.com/OviRei/OldTV-Remake/tree/GithubPages) | [Electron](https://github.com/OviRei/OldTV-Remake/tree/Electron)
+**Info** | This version has loads of bugs and code is a mess | This version should be more polished than the web version and with more features
