@@ -4,7 +4,7 @@ I took the concept/game idea of a game called "Old TV" and tried to recreate it 
 ## Game Versions
  ​   | Web | Electron
 ------------ | ------------- | -------------
-**Status** | ***Not working on*** | ***Working on***
+**Status** | ***Not working on*** | ***Not working on***
 **Where to play** | https://ovirei.github.io/OldTV-Remake/ | No playable version yet
 **Devices** | Desktop/Mobile | Desktop only
 **Branch** | [GithubPages](https://github.com/OviRei/OldTV-Remake/tree/GithubPages) | [Electron](https://github.com/OviRei/OldTV-Remake/tree/Electron)
